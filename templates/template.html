@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #85d4b2;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #cf9d9d;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #cf9d9d;
+  color: white;
+}
+
+.topnav .search-container {
+  float: right ;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  width: 700px;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #cf9d9d;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+
+.topnav .search-container button:hover {
+  background: #9ec8ff;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #9ec8ff;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="#home">Main</a>
+  <div class="search-container">
+     <form action = "http://127.0.0.1:5000/" method = "post">
+      <input type="text" placeholder="Input one or multiple opinions on abortion, gun control or affirmative action" name="input1">
+      <input type="text" placeholder="Input topic of opinion(s) (0:abortion, 1:gun control, 2:affirmative action, 3:unrelated)" name="input2">
+      <input type="text" placeholder="Input bias of video (0:left, 1:center, 2:right, 3:n/a)" name="input3">
+      <input type="text" placeholder="Input topic of video (0:abortion, 1:affirmative action, 2:gun control, 3:n/a)" name="input4">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+<div style="padding-left:16px">
+  <h2> Bias detection model </h2>
+</div>
+In the first space, write one or multiple opinions on one of the topics studied by the model: abortion, gun control or 
+affirmative action. If multiple opinions, separate them with a semi-colon (;). <br> In the second space, mark the topic of the 
+opinions, (0 for abortion, 1 for gun control, 2 for affirmative action or 3 for unrelated). <br> If the opinion doesn't come from a 
+political youtube video, write 3 in the third and fourth spaces. Otherwise, input the leaning of the source that published the 
+video under which the comment came, as classified by AllSides.com (refer to the image below for some sources, 0 for left 
+leaning, 1 for center and 2 for right leaning). <br> In the fourth space, mark the topic of the video the comment came from (0 for 
+abortion, 1 for affirmative action, 2 for gun control, 3 if not applicable). <br>All inputs must have the same amount of values 
+separated by a semi-colon.
+</body>
+<br><br>
+<input type="image" id="image" alt="Chart" src="https://www.allsides.com/sites/default/files/AllSidesMediaBiasChart-Version5.1.jpg" width="40%" height="40%"/>
+</html>
