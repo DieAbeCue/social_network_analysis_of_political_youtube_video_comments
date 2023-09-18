@@ -10,13 +10,13 @@
    The technologies used for this project include:  Python, Pandas, Google’s API, Azure translator, TF-IDF Vectorizer, Scikit-Learn, Doc2Vec, Json, Matplotlib, Stats models, Seaborn, Flask, html.
    
   The repository contains the following folders and files:
-     - Diego_Cuevas_Capstone_Project.ipynb: main file for the project
-     - Article_Bias_Prediction: The dataset of classified articles used to help train the classification model. The document with the              extension .tar.gz is the compressed document as found and downloaded. From that compressed file was extracted a folder (named                Article_Bias_Prediction) containing the compressed .zip file. From that zip file was extracted the folder containing the proper json        files used in the project (named Article_Bias_Prediction-main).
-     - comments.csv: the manually classified comments used to train the model
-     - augmented.csv: the back translated comments from comments.csv used to train the model
-     - Note_20230821_1234_otter_ai.txt: transcript of one of the studied videos that didn't have captions
-     - Bias_model_deployment.py: main code file for the deployment
-     - templates: the folder containing the html file where the model was deployed
-     - columns_for_model.csv: a reference dataframe used during the deployment of the model
-     - bias_model.pkl: the file of the saved model
-     - my_functions.py: a file containing string cleaning functions called during the deployment of the model
+  - Diego_Cuevas_Capstone_Project.ipynb: main file for the project
+  - Article_Bias_Prediction: The dataset of classified articles used to help train the classification model. The document with the extension .tar.gz is the compressed document as found and downloaded. From that compressed file was extracted a folder (named Article_Bias_Prediction) containing the compressed .zip file. From that zip file was extracted the folder containing the proper json files used in the project (named Article_Bias_Prediction-main).
+  - comments.csv: the manually classified comments used to train the model
+  - augmented.csv: the back translated comments from comments.csv used to train the model
+  - Note_20230821_1234_otter_ai.txt: transcript of one of the studied videos that didn't have captions
+  - Bias_model_deployment.py: main code file for the deployment
+  - templates: the folder containing the html file where the model was deployed
+  - columns_for_model.csv: a reference dataframe used during the deployment of the model
+  - bias_model.pkl: the file of the saved model
+  - my_functions.py: a file containing string cleaning functions called during the deployment of the model
