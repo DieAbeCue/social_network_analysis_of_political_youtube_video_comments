@@ -29,41 +29,41 @@ def get_input():
 @app.route('/run_pred/<string:text>/<string:topics>/<string:biases>/<string:vid_topics>')
 def run_pred(text, topics, biases, vid_topics):
     import numpy as np 
-    #from sklearn.feature_extraction.text import TfidfVectorizer
-    #import demoji
-    #from gensim.parsing.preprocessing import remove_stopwords
-    #import re
-    #from textblob import Word
-    #import nltk
-    #nltk.download('omw-1.4')
-    #import subprocess
-    #from nltk.tokenize import word_tokenize
-    #from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-    #import string
-    #from my_functions import data_process #this is a function that I created including all the steps to clean and vectorize text
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    import demoji
+    from gensim.parsing.preprocessing import remove_stopwords
+    import re
+    from textblob import Word
+    import nltk
+    nltk.download('omw-1.4')
+    import subprocess
+    from nltk.tokenize import word_tokenize
+    from gensim.models.doc2vec import Doc2Vec, TaggedDocument
+    import string
+    from my_functions import data_process #this is a function that I created including all the steps to clean and vectorize text
     
     
-    """command = "python -m textblob.download_corpora"
+    command = "python -m textblob.download_corpora"
     
     try:
         subprocess.run(command, shell=True, check=True)
         print("Corpora downloaded successfully.")
     except subprocess.CalledProcessError as e:
-        print("Error:", e)"""
+        print("Error:", e)
     
     opinions = text.split(';')
     about = topics.split(';')
     bias_of_video = biases.split(';')
     topics_of_video = vid_topics.split(';')
     
-    #processed_opinions = data_process(opinions)
+    processed_opinions = data_process(opinions)
     
     #As soon as i included the text cleaning and word cleaning processes, the deployment started taking too long and crashed
     #Therefore, to have an inaccurate but functional deployment, I tried filling the missing values with zeroes instead of 
     #vectorized text.
-    processed_opinions = []
-    for i in range(len(opinions)):
-        processed_opinions.append([0] * 300)
+    #processed_opinions = []
+    #for i in range(len(opinions)):
+        #processed_opinions.append([0] * 300)
 
     category_1 = []
     for i in range(len(about)):
@@ -99,9 +99,7 @@ def run_pred(text, topics, biases, vid_topics):
             category_3.append([0, 0, 1])
 
     for i in range(len(processed_opinions)):
-        processed_opinions[i].extend(category_1[i])
-        processed_opinions[i].extend(category_2[i])
-        processed_opinions[i].extend(category_3[i])
+        processed_opinions[i] = np.hstack((processed_opinions[i], np.array(category_1[i]), np.array(category_2[i]), np.array(category_3[i])))
     
     
     ref_def = pd.read_csv('../ds-final_project/columns_for_model.csv')
